@@ -4,6 +4,10 @@ module.exports = async (url, scripts) => {
     try {
         const browser = await puppeteer.launch({ args: ['--lang=zh-CN']});
         const page = await browser.newPage();
+        await page.setViewport({
+            width: 1920,
+            height: 1080
+          });
         console.log(url);
         await page.goto(url);
         for (let i = 0; i < scripts.length; i++) {
